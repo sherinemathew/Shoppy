@@ -1,4 +1,4 @@
-const { addItem } = require("../utils/item_utilities");
+const { addItem, getAllItems } = require("../utils/item_utilities");
 
 const newItem = function(req, res) {
   addItem(req).save((err, post) => {
@@ -13,6 +13,19 @@ const newItem = function(req, res) {
   });
 };
 
+const getItems = function(req, res) {
+  getAllItems(req).exec((err, items) => {
+    if (err) {
+      res.status(500);
+      res.json({
+        error: err.message
+      });
+    }
+    res.send(items);
+  });
+};
+
 module.exports = {
-  newItem
+  newItem,
+  getItems
 };
