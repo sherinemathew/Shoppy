@@ -1,4 +1,4 @@
-const { addItem, deleteItem } = require("../utils/item_utilities");
+const { addItem, getAllItems,deleteItem } = require("../utils/item_utilities");
 
 const newItem = function(req, res) {
   addItem(req).save((err, post) => {
@@ -12,7 +12,6 @@ const newItem = function(req, res) {
     res.send(post);
   });
 };
-
 
 const removeItem = function (req, res) {
   if (req.error) {
@@ -29,9 +28,20 @@ const removeItem = function (req, res) {
           res.sendStatus(204);
       });
   }
+const getItems = function(req, res) {
+  getAllItems(req).exec((err, items) => {
+    if (err) {
+      res.status(500);
+      res.json({
+        error: err.message
+      });
+    }
+    res.send(items);
+  });
 };
 
 module.exports = {
   newItem,
-  removeItem
+  removeItem,
+  getItems
 };
