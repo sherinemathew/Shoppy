@@ -4,6 +4,11 @@ const addItem = function(req) {
   return new Item(req.body);
 };
 
+const updateItem = function(req){
+    return Item.findByIdAndUpdate(req.params.id, req.body,{new: true});
+}
+
 module.exports = {
-  addItem
+  addItem,
+  updateItem
 };
