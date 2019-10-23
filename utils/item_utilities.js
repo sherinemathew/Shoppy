@@ -15,5 +15,6 @@ const getAllItems = function(req) {
 module.exports = {
   addItem,
   deleteItem,
+  updateItem,
   getAllItems
 };
