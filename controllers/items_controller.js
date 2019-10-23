@@ -1,4 +1,4 @@
-const { addItem, getAllItems,deleteItem } = require("../utils/item_utilities");
+const { addItem, getAllItems, deleteItem } = require("../utils/item_utilities");
 
 const newItem = function(req, res) {
   addItem(req).save((err, post) => {
@@ -13,21 +13,23 @@ const newItem = function(req, res) {
   });
 };
 
-const removeItem = function (req, res) {
+const removeItem = function(req, res) {
   if (req.error) {
-      res.status(req.error.status);
-      res.send(req.error.message);
+    res.status(req.error.status);
+    res.send(req.error.message);
   } else {
-      deleteItem(req.params.id).exec((err) => {
-          if (err) {
-              res.status(500);
-              res.json({
-                  error: err.message
-              });
-          }
-          res.sendStatus(204);
-      });
+    deleteItem(req.params.id).exec(err => {
+      if (err) {
+        res.status(500);
+        res.json({
+          error: err.message
+        });
+      }
+      res.sendStatus(204);
+    });
   }
+};
+
 const getItems = function(req, res) {
   getAllItems(req).exec((err, items) => {
     if (err) {
