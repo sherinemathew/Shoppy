@@ -3,6 +3,7 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const itemRouter = require("./routes/item_routes");
+const http = require("http");
 
 const port = 3000;
 
@@ -31,8 +32,8 @@ app.use(cors());
 app.use(bodyParser.json());
 
 //routing
-app.use("/items", itemRouter);
+app.use("/api/items", itemRouter);
 
-app.listen(port, () => {
+const server = app.listen(port, () => {
   console.log(`Shop express app listening on port ${port}`);
 });
