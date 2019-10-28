@@ -9,6 +9,7 @@ const newItem = function(req, res) {
   addItem(req).save((err, post) => {
     if (err) {
       res.status(500);
+      console.log("failed to post new item")
       res.json({
         error: err.message
       });

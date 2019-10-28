@@ -4,7 +4,7 @@
     <hr />
     <p class="error" v-if="error">{{ error }}</p>
     <div class="form" v-if="isAdmin">
-      <h3 class="title">Enter new Item</h3>
+      <h3 class="title">Add a new Item</h3>
       <input v-model="newItemName" required placeholder="New Item">
             <h3 class="title">Add a description</h3>
       <input v-model="newItemDescription" placeholder="Enter Description ..">
@@ -64,15 +64,17 @@ export default {
       this.error = err.message;
     }
   },
-  //  computed: {
-  //   newItem: function () {
-  //     return this.newItemName + this.newItemPrice 
-  //     // + this.newItemDescription + this.newItemCategory
-  //   }
-  // },
+
  methods: { 
-   async createItem() {
-     await ItemService.insertItem(this.newItemName);
+  //  async createItem(newItemName, newItemPrice, newItemDescription, newItemCategory) {
+     
+  //    await ItemService.insertItem(`{
+  //      "name": "${newItemName}", "price": "${newItemPrice}", "description": "${newItemDescription}", "category": "${newItemCategory}" 
+  //    }`);
+  //    this.items = await ItemService.getItems();
+  //  },
+      async createItem() {
+     await ItemService.insertItem();
      this.items = await ItemService.getItems();
    },
     async deleteItem(id) {

@@ -23,10 +23,8 @@ class ItemService {
 
   // Add an item
 
-  static insertItem(newItemName) {
-    return axios.post(url, {
-      newItemName
-    })
+  static insertItem() {
+    return axios.post(url, {"name": "Outdoorsman", "price": "200", "description": "Available", "category": "Square" })
 
   }
   // Delete an item
