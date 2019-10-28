@@ -20,9 +20,29 @@ class ItemService {
       }
     });
   }
-  //delete
 
-  //update
+  // Add an item
+
+  static insertItem(newItemName) {
+    return axios.post(url, {
+      newItemName
+    })
+
+  }
+  // Delete an item
+  static deleteItem(id) {
+    return axios.delete(`${url}${id}`);
+  }
+
+  // Update an item
+
+  static updateItem(id) {
+    return axios.post(`${url}${id}`,{
+
+    });
+  }
 }
+// axios.post(url[, data[, config]])
+
 
 export default ItemService;
